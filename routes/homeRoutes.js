@@ -4,5 +4,9 @@ const router = express.Router();
 const bookController = require('../controllers/bookController');
 
 router.get('/new', bookController.getNewBookPage);
+router.post('/books', (req, res) => {
+    console.log('POST / route called'); 
+    bookController.createBook(req, res);
+});
 
 module.exports = router;

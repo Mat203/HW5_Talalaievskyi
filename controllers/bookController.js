@@ -1,3 +1,5 @@
+const { Book } = require('../models/book');
+
 async function getNewBookPage(req, res) {
     try {
         res.render('newBook');
@@ -6,7 +8,26 @@ async function getNewBookPage(req, res) {
     }
 }
 
+async function createBook(req, res) {
+    try {
+        const book = new Book({
+            title: req.body.title,
+            author: req.body.author,
+            publishDate: req.body.publishDate,
+            genre: req.body.genre
+        });
+        await book.save();
+        console.log('Book created successfully:', book);
+        res.redirect('/'); 
+    } catch (error) {
+        console.log('Error occurred while creating book:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
 module.exports = {
-    getNewBookPage
+    getNewBookPage,
+    createBook
 };
 
