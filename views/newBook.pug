@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title Create a New Book
+  body
+    h1 Create a New Book
+    form(action="/books" method="post")
+      label(for="title") Title
+      input(type="text" id="title" name="title")
+      label(for="author") Author
+      input(type="text" id="author" name="author")
+      label(for="publishDate") Publish Date
+      input(type="date" id="publishDate" name="publishDate")
+      label(for="genre") Genre
+      input(type="text" id="genre" name="genre")
+      button(type="submit") Submit
