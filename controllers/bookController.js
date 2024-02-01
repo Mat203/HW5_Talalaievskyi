@@ -35,10 +35,21 @@ async function getBookById(req, res) {
     }
 }
 
+async function getAllBooks(req, res) {
+    try {
+        const books = await Book.find();
+        res.render('bookList', { books: books });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
 
 module.exports = {
     getNewBookPage,
     createBook,
-    getBookById
+    getBookById,
+    getAllBooks
 };
 

@@ -9,5 +9,6 @@ router.post('/books', (req, res) => {
     bookController.createBook(req, res);
 });
 router.get('/:id', bookController.getBookById);
+router.get('/', bookController.getAllBooks);
 
 module.exports = router;
