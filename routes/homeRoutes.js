@@ -8,5 +8,6 @@ router.post('/books', (req, res) => {
     console.log('POST / route called'); 
     bookController.createBook(req, res);
 });
+router.get('/:id', bookController.getBookById);
 
 module.exports = router;

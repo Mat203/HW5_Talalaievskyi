@@ -25,9 +25,20 @@ async function createBook(req, res) {
     }
 }
 
+async function getBookById(req, res) {
+    try {
+        const book = await Book.findById(req.params.id);
+        if (!book) return res.status(404).send('The book with the given ID was not found.');
+        res.render('displayBook', { book: book });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 
 module.exports = {
     getNewBookPage,
-    createBook
+    createBook,
+    getBookById
 };
 
